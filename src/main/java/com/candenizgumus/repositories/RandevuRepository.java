@@ -17,7 +17,8 @@ public class RandevuRepository extends RepositoryManager<Randevu, Long>
     //Bir hastanın son ziyaret tarihini döndürün
     public LocalDate findUsersByComponentType(String hastaAdi)
     {
-        TypedQuery<LocalDate> date = getEntityManager().createQuery("SELECT r.tarih FROM Hasta h JOIN Randevu r ON r.hastaid = h.id WHERE h.ad = :hastaAdi ORDER BY r.tarih DESC LIMIT 1 ", LocalDate.class);
+        TypedQuery<LocalDate> date = getEntityManager().createQuery("SELECT r.tarih FROM Hasta h JOIN Randevu r ON r.hastaid = h.id WHERE h.ad = :hastaAdi ORDER BY r.tarih DESC", LocalDate.class);
+        date.setMaxResults(1);
 
         return date.setParameter("hastaAdi",hastaAdi).getSingleResult();
 
