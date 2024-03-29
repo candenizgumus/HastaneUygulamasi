@@ -1,5 +1,6 @@
 package com.candenizgumus;
 
+import com.candenizgumus.repositories.DoktorRepository;
 import com.candenizgumus.repositories.RandevuRepository;
 import com.candenizgumus.services.HastaneService;
 import com.candenizgumus.utility.DummyData;
@@ -13,6 +14,7 @@ public class Runner
        // new DummyData();
         HastaneService hastaneService = new HastaneService();
         RandevuRepository randevuRepository = new RandevuRepository();
+        DoktorRepository doktorRepository = new DoktorRepository();
 
 
         //Adı verilen hastanın tüm randevularını listelesin.
@@ -26,6 +28,13 @@ public class Runner
         //hastaneService.findRandevularByDate("Deniz", LocalDate.of(2024,03,01),LocalDate.of(2024,03,30));
 
         //Bir hastanın son ziyaret tarihini döndürün
-        System.out.println(randevuRepository.findUsersByComponentType("Deniz"));
+        //System.out.println(randevuRepository.findUsersByComponentType("Elif"));
+
+        //Adı verilen doktor kaç hasta bakmıştır?
+        //System.out.println(doktorRepository.findHastaSayisiByDoktor("Gizem"));
+
+        //Bellirli bir branşta görev yapan doktorlar kimlerdir?
+        hastaneService.findDoktorByBransAd("Onkoloji");
+
     }
 }

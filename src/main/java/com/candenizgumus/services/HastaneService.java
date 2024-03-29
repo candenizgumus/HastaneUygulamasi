@@ -70,4 +70,16 @@ public class HastaneService
         });
 
     }
+
+    //Bellirli bir branşta görev yapan doktorlar kimlerdir?
+    public void findDoktorByBransAd(String bransAd){
+        System.out.println("Seçilen Branş: " + bransAd);
+        List<Brans> branslar = bransRepository.findByColumnAndValue("ad", bransAd);
+        branslar.forEach(brans -> {
+            List<Doktor> bransliDoktorlar = doktorRepository.findByColumnAndValue("bransid", brans.getId());
+            bransliDoktorlar.forEach(System.out::println);
+        });
+
+
+    }
 }
